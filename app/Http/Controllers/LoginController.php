@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -14,7 +16,7 @@ class LoginController extends Controller
     public function index()
     {
         //
-        return view ('login');
+        return view ('auth.login');
     }
 
     /**
@@ -81,5 +83,25 @@ class LoginController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function postlogin (Request $request){
+        // dd($request->all());
+        // return view('authentication.login');
+
+        if (Auth::attempt($request->only('email','password'))){
+            if (Auth::user()->role == 'admin') { // Role Admin
+                return redirect('/admin/kamar');
+            } elseif (Auth::user()->role == 'resepsionis') { // Role resepsionis
+                return redirect('/resepsionis/index');
+            }
+            return redirect('/login');
+        }
+        return redirect('/login');
+    }
+
+    public function logout (Request $request){
+        Auth::logout();
+        return redirect('/login');
     }
 }

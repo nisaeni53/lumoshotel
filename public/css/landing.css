@@ -1,5 +1,56 @@
-.jumbroton{
-    background-image: url("../image/imgutama.png");
-    background-repeat: no-repeat;
-    padding: 25px;
+body{ 
+    background-color: #E5E6E8; 
+} 
+.jumbroton{ 
+    background-image: url("../image/imgutama.png"); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    padding: 68px 50px 140px 50px; 
+} 
+.judul h1{ 
+    font-weight: bold; 
+    font-size: 48; 
+    width: 320px; 
+} 
+.subjudul h5{ 
+    width: 420px; 
+} 
+ 
+.cekin{ 
+    margin-top: -60px; 
+    background-color: #FFFFFF; 
+    border-radius: 15px; 
+    box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.2); 
+} 
+ 
+.choice-room .card{ 
+    border-radius: 15px; 
+    box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.2); 
+} 
+ 
+.btnselengkapnya{ 
+    margin-left: auto; 
+} 
+ 
+.name-facility h5 { 
+    margin-left: 20px; 
+} 
+ 
+.nav-item .nav-link img { 
+    height: 64px; 
+    width: 64px; 
+    border-radius: 50%; 
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link { 
+    background: none !important; 
+}
+
+.tab-pane.active img {
+    height: 300px;
+    width: 500px;
+    border-radius: 10px;
+}
+
+ul#pills-tab {
+    margin-left: 11.5%;
 }

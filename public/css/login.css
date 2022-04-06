@@ -1,0 +1,19 @@
+.login {
+    height: 100vh;
+}
+
+.login-left {
+    background-color: white;
+}
+
+.login-right {
+    background-color: #577896;
+}
+svg {
+    margin: 10% 10% 0 10%;
+}
+
+button.btn.btn-primary.btn-block {
+    margin-top: 12px;
+    float: right;
+}
