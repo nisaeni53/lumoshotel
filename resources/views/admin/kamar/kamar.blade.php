@@ -3,10 +3,9 @@
 
 <div class="container">
     <div class="card mt-5">
-        <div class="card-head">
-            <div class="card-title">
-                <h1>Table Admin Kamar</h1>
-            </div>
+        <div class="card-header d-flex">
+            <h1 class="card-title">Table Admin Kamar</h1>
+            <a href="{{route('kamar.create')}}" class="btn btn-primary" style="margin-left: 56%"> Tambah Tipe </a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -24,10 +23,18 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$row->id_fasilitask}}</td>
                     <td>{{$row->tipe_kamar}}</td> 
-                    <td>{{$row->foto}}</td>
                     <td>
-                        <a href="#" class="btn btn-warning" >Edit </a>
-                        <a href="#" data-id="{{$row->id}}" class="btn btn-danger btn-del">Delete</a>
+                        <img src="{{url('') . '/' . $row->foto}}" width="100px">
+                    </td>
+                    <td>
+                        <form action="{{ route('kamar.destroy',$row->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{route('kamar.edit', $row->id)}}" class="btn btn-warning" >Edit </a>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>   
+                    </td>
+                    <td>
                 </tbody>
                     @endforeach
             </table>

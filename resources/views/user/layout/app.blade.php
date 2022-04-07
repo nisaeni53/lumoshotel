@@ -9,11 +9,11 @@
 </head>
 <body>
     {{-- navbar --}}
-    @include('layout.navbar')
+    @include('user.layout.navbar')
     {{-- content --}}
     @yield('content')
     {{-- Footer --}}
-    @include('layout.footer')
+    @include('user.layout.footer')
 
     <script src="{{asset('bootstrap/bootstrap-5.1.3-dist/')}}/js/bootstrap.min.js"></script>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FasilitasKamar;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class FasilitaskController extends Controller
@@ -27,6 +28,7 @@ class FasilitaskController extends Controller
     public function create()
     {
         //
+        $data['fasilitaskamar'] = FasilitasKamar::all();
         return view('admin.fasilitaskamar.form');
     }
 
@@ -40,11 +42,32 @@ class FasilitaskController extends Controller
     {
         //
         // dd($request->all());
-        FasilitasKamar::create([
-            'nama_fasilitas' => $request->nama_fasilitas,
-            'foto' => $request->foto,
-        ]);
-        return redirect('admin/fasilitaskamar');
+        $rule = [
+            'nama_fasilitas' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg,tmp,png',
+        ];
+
+        $this->validate($request, $rule);
+        
+        $input = $request->all();
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $foto_ext = $foto->getClientOriginalExtension();
+            $foto_name = Str::random(8);
+
+        $upload_path = 'assets/admin';
+        $imagename = $upload_path.'/'.$foto_name.'.'.$foto_ext;
+        $request->file('foto')->move($upload_path,$imagename);
+
+        $input['foto'] = $imagename;
+        }
+
+        $status = FasilitasKamar::create($input);
+        if ($status){
+            return redirect('admin/fasilitaskamar')->with('success', 'Data berhasil ditambahkan');
+        }else{
+            return redirect('admin/fasilitaskamar/create')->with('error', 'Data gagal ditambahkan');
+        }
     }
 
     /**
@@ -66,7 +89,10 @@ class FasilitaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fasilitaskamar = FasilitasKamar::find($id);
+        $data['fasilitaskamar'] = FasilitasKamar::all();
+        $data['fasilitaskamar'] = $fasilitaskamar;
+        return view('admin.fasilitaskamar.form', $data);
     }
 
     /**
@@ -78,7 +104,24 @@ class FasilitaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rule = [
+            'nama_fasilitas' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg,tmp,png',
+        ];
+
+        $this->validate($request, $rule);
+        $input = $request->all();
+        $fasilitaskamar = FasilitasKamar::find($id);
+        $fasilitaskamar->nama_fasilitas = $request->nama_fasilitas;
+        $fasilitaskamar->foto = $request->foto;
+
+
+        $status = $fasilitaskamar->save();
+        if ($status){
+            return redirect('admin/fasilitaskamar')->with('success', 'Data berhasil diubah');
+        }else{
+            return redirect('admin/fasilitaskamar/form')->with('error', 'Data gagal diubah');
+        }
     }
 
     /**
@@ -87,8 +130,9 @@ class FasilitaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FasilitasKamar $fasilitaskamar)
     {
-        //
+        $fasilitaskamar->delete();
+        return redirect('admin/fasilitaskamar')->with('succes','Siswa Berhasil di Hapus');
     }
 }

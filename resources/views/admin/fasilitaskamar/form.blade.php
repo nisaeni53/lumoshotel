@@ -6,11 +6,11 @@
         <div class="card-head">
             <div class="card-title">
                 {{@$fasilitaskamar ? 'Ubah' : 'Tambah'}} Fasilitas Kamar
-                <h1>Form Fasilitas Hotel</h1>
+                <h1>Form Fasilitas Kamar</h1>
             </div>
         </div>
         <div class="card-body">
-            <form class="form" action="{{@$fasilitaskamar ? route('fasilitaskamar.update',@$fasilitaskamar->id) : route('fasilitaskamar.store')}}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{@$fasilitaskamar ? route('fasilitaskamar.update',$fasilitaskamar->id) : route('fasilitaskamar.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if(@$fasilitaskamar)
                     {{method_field('patch')}}
@@ -22,10 +22,15 @@
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
-                  <label for="foto" class="form-label">Foto</label>
-                  <input type="text" class="form-control" id="foto" name="foto"
-                  value="{{old('foto', @$fasilitaskamar ? $fasilitaskamar->foto : '')}}">
+                    <label for="foto" class="form-label">Foto</label>
+                    <input type="file" class="form-control" id="foto" name="foto"
+                    value="{{old('foto', @$fasilitaskamar ? $fasilitaskamar->foto : '')}}">
                 </div>
+                @if(@$fasilitaskamar)
+                    <div class="mb-3">
+                            <img src="{{url('') . '/' . $fasilitaskamar->foto}}" width="17%" height="5%">
+                    </div>
+                @endif
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

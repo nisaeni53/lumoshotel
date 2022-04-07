@@ -125,15 +125,10 @@ class FasilitashController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FasilitasHotel $fasilitashotel)
     {
         //
-        $fasilitashotel = FasilitasHotel::find($id);
-        $status = $fasilitashotel->delete();
-        if ($status){
-            return 1;
-        }else{
-            return 0;
-        }
+        $fasilitashotel->delete();
+        return redirect('admin/fasilitashotel')->with('succes','Siswa Berhasil di Hapus');
     }
 }

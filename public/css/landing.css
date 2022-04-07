@@ -2,6 +2,7 @@ body{
     background-color: #E5E6E8; 
 } 
 .jumbroton{ 
+    margin-top: 1%;
     background-image: url("../image/imgutama.png"); 
     background-repeat: no-repeat; 
     background-size: cover; 

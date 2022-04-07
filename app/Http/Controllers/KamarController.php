@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kamar;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class KamarController extends Controller
@@ -27,6 +28,8 @@ class KamarController extends Controller
     public function create()
     {
         //
+        $data['kamar'] = Kamar::all();
+        return view('admin.kamar.form');
     }
 
     /**
@@ -38,6 +41,33 @@ class KamarController extends Controller
     public function store(Request $request)
     {
         //
+        $rule = [
+            'tipe_kamar' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg,tmp,png',
+            'stok' => 'required',
+        ];
+
+        $this->validate($request, $rule);
+        
+        $input = $request->all();
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $foto_ext = $foto->getClientOriginalExtension();
+            $foto_name = Str::random(8);
+
+        $upload_path = 'assets/admin';
+        $imagename = $upload_path.'/'.$foto_name.'.'.$foto_ext;
+        $request->file('foto')->move($upload_path,$imagename);
+
+        $input['foto'] = $imagename;
+        }
+
+        $status = Kamar::create($input);
+        if ($status){
+            return redirect('admin/kamar')->with('success', 'Data berhasil ditambahkan');
+        }else{
+            return redirect('admin/kamar/create')->with('error', 'Data gagal ditambahkan');
+        }
     }
 
     /**
@@ -60,6 +90,10 @@ class KamarController extends Controller
     public function edit($id)
     {
         //
+        $kamar = Kamar::find($id);
+        $data['kamar'] = Kamar::all();
+        $data['kamar'] = $kamar;
+        return view('admin.kamar.form', $data);
     }
 
     /**
@@ -72,6 +106,26 @@ class KamarController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $rule = [
+            'tipe_kamar' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg,tmp,png',
+            'stok' => 'required',
+        ];
+
+        $this->validate($request, $rule);
+        $input = $request->all();
+        $kamar = Kamar::find($id);
+        $kamar->tipe_kamar = $request->tipe_kamar;
+        $kamar->foto = $request->foto;
+        $kamar->stok = $request->stok;
+
+
+        $status = $kamar->save();
+        if ($status){
+            return redirect('admin/kamar')->with('success', 'Data berhasil diubah');
+        }else{
+            return redirect('admin/kamar/form')->with('error', 'Data gagal diubah');
+        }
     }
 
     /**
@@ -80,8 +134,9 @@ class KamarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kamar $kamar)
     {
-        //
+        $kamar->delete();
+        return redirect('admin/kamar')->with('succes','Siswa Berhasil di Hapus');
     }
 }

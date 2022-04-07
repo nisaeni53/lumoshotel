@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('id_fasilitask');
             $table->string('tipe_kamar', 30);
             $table->string('foto');
+            $table->integer('stok');
             $table->timestamps();
         });
     }

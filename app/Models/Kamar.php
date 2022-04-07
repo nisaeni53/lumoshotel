@@ -12,7 +12,7 @@ class Kamar extends Model
     protected $table = 'kamar';
 
     protected $fillable = [
-        'id_fasilitask', 'tipe_kamar', 'foto'
+        'id_fasilitask', 'tipe_kamar', 'foto', 'stok'
     ]; 
     
     public function fasilitask()

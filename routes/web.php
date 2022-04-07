@@ -25,13 +25,13 @@ Route::get('/', function () {
 });
 Route::resource('/landing', LandingController::class);
 
-Route::group(['middleware' => ['auth','cekrole:admin,resepsionis']], function () {
+// Route::group(['middleware' => ['auth','cekrole:admin,resepsionis']], function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/simpanregister', [RegisterController::class, 'simpanregister'])->name('simpanregister');
-});
+// });
 
 Route::group(['middleware' => ['auth','cekrole:admin']], function () {
     Route::resource('/admin/kamar', KamarController::class);
