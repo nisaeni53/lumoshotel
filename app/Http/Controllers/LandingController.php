@@ -23,7 +23,7 @@ class LandingController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.formchekin');
     }
 
     /**

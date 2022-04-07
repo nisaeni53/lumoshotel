@@ -1,0 +1,16 @@
+body{
+    background-image: url("../image/bg3.png");
+    background-size: cover;
+}
+
+.card-checkin{
+height: 540px;
+border-radius: 25px;
+background: linear-gradient(rgba(255, 255, 255, 0.71) 0%, rgba(99, 99, 99, 0.68) 100%);
+border: 1px solid #fff;
+}
+
+button.btn.btn-primary.form-control {
+    height: 50px;
+    border-radius: 12px;
+}

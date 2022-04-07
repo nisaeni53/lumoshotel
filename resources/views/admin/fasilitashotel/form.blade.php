@@ -19,7 +19,7 @@
                   <label for="nama_fasilitas" class="form-label">Nama Fasilitas</label>
                   <input type="text" class="form-control" id="nama_fasilitas" aria-describedby="emailHelp" 
                   name="nama_fasilitas" value="{{old('nama_fasilitas', @$fasilitashotel ? $fasilitashotel->nama_fasilitas : '')}}">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <div id="emailHelp" class="form-text">Well never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                   <label for="foto" class="form-label">Foto</label>

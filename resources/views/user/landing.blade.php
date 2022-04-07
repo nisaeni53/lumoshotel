@@ -141,26 +141,29 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-fasilitas1" role="tabpanel" aria-labelledby="pills-fasilitas1-tab"><img src="{{asset('image/')}}/fasilitas1.jpg" alt="" height="300"></div>
-                        <div class="tab-pane fade" id="pills-fasilitas2" role="tabpanel" aria-labelledby="pills-fasilitas2-tab"><img src="{{asset('image/')}}/fasilitas2.jpg" alt="" height="300"></div>
-                        <div class="tab-pane fade" id="pills-fasilitas3" role="tabpanel" aria-labelledby="pills-fasilitas3-tab"><img src="{{asset('image/')}}/fasilitas3.jpg" alt="" height="300"></div>
-                        <div class="tab-pane fade" id="pills-fasilitas4" role="tabpanel" aria-labelledby="pills-fasilitas4-tab"><img src="{{asset('image/')}}/fasilitas4.jpg" alt="" height="300"></div>
+                    <img src="{{asset('image/')}}/bg1.png" alt="" class="bg-pils">
+                    <div class="fasilitas-pilih">
+                        <div class="tab-content" id="pills-tabContent" style="margin-left: 5%;">
+                            <div class="tab-pane fade show active" id="pills-fasilitas1" role="tabpanel" aria-labelledby="pills-fasilitas1-tab"><img src="{{asset('image/')}}/fasilitas1.jpg" alt="" height="300"></div>
+                            <div class="tab-pane fade" id="pills-fasilitas2" role="tabpanel" aria-labelledby="pills-fasilitas2-tab"><img src="{{asset('image/')}}/fasilitas2.jpg" alt="" height="300"></div>
+                            <div class="tab-pane fade" id="pills-fasilitas3" role="tabpanel" aria-labelledby="pills-fasilitas3-tab"><img src="{{asset('image/')}}/fasilitas3.jpg" alt="" height="300"></div>
+                            <div class="tab-pane fade" id="pills-fasilitas4" role="tabpanel" aria-labelledby="pills-fasilitas4-tab"><img src="{{asset('image/')}}/fasilitas4.jpg" alt="" height="300"></div>
+                        </div>
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-fasilitas1-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas1" type="button" role="tab" aria-controls="pills-fasilitas1" aria-selected="true"><img src="{{asset('image/')}}/fasilitas1.jpg" alt=""></button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-fasilitas2-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas2" type="button" role="tab" aria-controls="pills-fasilitas2" aria-selected="false"><img src="{{asset('image/')}}/fasilitas2.jpg" alt=""></button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-fasilitas3-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas3" type="button" role="tab" aria-controls="pills-fasilitas3" aria-selected="false"><img src="{{asset('image/')}}/fasilitas3.jpg" alt=""></button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-fasilitas4-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas4" type="button" role="tab" aria-controls="pills-fasilitas4" aria-selected="false"><img src="{{asset('image/')}}/fasilitas4.jpg" alt=""></button>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-fasilitas1-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas1" type="button" role="tab" aria-controls="pills-fasilitas1" aria-selected="true"><img src="{{asset('image/')}}/fasilitas1.jpg" alt=""></button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-fasilitas2-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas2" type="button" role="tab" aria-controls="pills-fasilitas2" aria-selected="false"><img src="{{asset('image/')}}/fasilitas2.jpg" alt=""></button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-fasilitas3-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas3" type="button" role="tab" aria-controls="pills-fasilitas3" aria-selected="false"><img src="{{asset('image/')}}/fasilitas3.jpg" alt=""></button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-fasilitas4-tab" data-bs-toggle="pill" data-bs-target="#pills-fasilitas4" type="button" role="tab" aria-controls="pills-fasilitas4" aria-selected="false"><img src="{{asset('image/')}}/fasilitas4.jpg" alt=""></button>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

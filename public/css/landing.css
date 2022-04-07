@@ -53,5 +53,16 @@ body{
 }
 
 ul#pills-tab {
-    margin-left: 11.5%;
+    margin-left: 12%;
+}
+
+.fasilitas-pilih{
+    position: relative;
+}
+
+.bg-pils{
+    position: absolute;
+    margin-top: 120px;
+    height: 280px;
+    width: 550px;
 }
