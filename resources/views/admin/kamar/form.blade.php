@@ -5,8 +5,7 @@
     <div class="card mt-5">
         <div class="card-head">
             <div class="card-title">
-                {{@$kamar ? 'Ubah' : 'Tambah'}} Fasilitas Kamar
-                <h1>Form Fasilitas Kamar</h1>
+                <h1>{{@$kamar ? 'Ubah' : 'Tambah'}} Fasilitas Kamar</h1>
             </div>
         </div>
         <div class="card-body">
@@ -28,7 +27,7 @@
                 </div>
                 @if(@$kamar)
                     <div class="mb-3">
-                            <img src="{{url('') . '/' . $fasilitaskamar->foto}}" width="17%" height="5%">
+                        <img src="{{url('') . '/' . $kamar->foto}}" width="17%" height="5%">
                     </div>
                 @endif
                 <div class="mb-3">
@@ -39,6 +38,37 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+
+                @if (@$fasilitaskamar)
+                    <hr>
+                    <h3>Detail</h3>
+                    <a href="{{url('/admin/fasilitaskamar/'. $kamar->id . '/create')}}" class="btn btn-primary"> Add Produk </a>
+                    <table class="table mt-1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipe kamar</th>
+                                <th>Nama Fasilitas</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($fasilitaskamar as $row)
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$row->kamar->tipe_kamar}}</td>
+                                <td>{{$row->nama_fasilitas}}</td>
+                                <td>
+                                    <form action="{{ route('fasilitaskamar.destroy',$row->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                        <a href="{{route('fasilitaskamar.edit', $row->id)}}" class="btn btn-warning" >Edit </a>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>   
+                                </td>
+                        </tbody>
+                            @endforeach
+                    </table>
+                @endif          
         </div>
     </div>
 </div>

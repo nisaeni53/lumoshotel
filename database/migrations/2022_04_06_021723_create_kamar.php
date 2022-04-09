@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('kamar', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_fasilitask');
             $table->string('tipe_kamar', 30);
             $table->string('foto');
             $table->integer('stok');

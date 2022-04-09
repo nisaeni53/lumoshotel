@@ -5,8 +5,7 @@
     <div class="card mt-5">
         <div class="card-head">
             <div class="card-title">
-                {{@$fasilitashotel ? 'Ubah' : 'Tambah'}} Fasilitas Hotel
-                <h1>Form Fasilitas Hotel</h1>
+                <h1>{{@$fasilitashotel ? 'Ubah' : 'Tambah'}} Fasilitas Hotel</h1>
             </div>
         </div>
         <div class="card-body">
@@ -23,9 +22,14 @@
                 </div>
                 <div class="mb-3">
                   <label for="foto" class="form-label">Foto</label>
-                  <input type="text" class="form-control" id="foto" name="foto"
+                  <input type="file" class="form-control" id="foto" name="foto"
                   value="{{old('foto', @$fasilitashotel ? $fasilitashotel->foto : '')}}">
                 </div>
+                @if(@$fasilitashotel)
+                    <div class="mb-3">
+                        <img src="{{url('') . '/' . $fasilitashotel->foto}}" width="17%" height="5%">
+                    </div>
+                @endif
                 <div class="mb-3">
                     <label for="keterangan" class="form-label">Keterangan</label>
                     <input type="text" class="form-control" id="keterangan" name="keterangan"

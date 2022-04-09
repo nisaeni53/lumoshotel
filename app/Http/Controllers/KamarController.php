@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FasilitasKamar;
 use App\Models\Kamar;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class KamarController extends Controller
     {
         //
         $data['kamar'] = Kamar::all();
+        $data['fasilitaskamar'] = FasilitasKamar::all();
         return view('admin.kamar.kamar', $data);
     }
 
@@ -29,6 +31,7 @@ class KamarController extends Controller
     {
         //
         $data['kamar'] = Kamar::all();
+        $data['fasilitaskamar'] = FasilitasKamar::all();
         return view('admin.kamar.form');
     }
 
@@ -90,6 +93,7 @@ class KamarController extends Controller
     public function edit($id)
     {
         //
+        $data['fasilitaskamar'] = FasilitasKamar::all();
         $kamar = Kamar::find($id);
         $data['kamar'] = Kamar::all();
         $data['kamar'] = $kamar;

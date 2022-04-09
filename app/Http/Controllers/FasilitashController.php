@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FasilitasHotel;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class FasilitashController extends Controller
@@ -41,22 +42,29 @@ class FasilitashController extends Controller
         //
         $rule = [
             'nama_fasilitas' => 'required',
-            'foto' => 'required',
-            'keterangan' => 'required'
+            'foto' => 'required|mimes:jpg,jpeg,tmp,png',
+            'keterangan' => 'required',
         ];
 
-        $customMessages = [
-            'nama_fasilitas.required' => 'Field Nama Fasilitas Wajib Diisi!',
-            'foto.required' => 'Field Foto Wajib Diisi!',
-            'keterangan.required' => 'Field Keterangan Wajib Diisi!',
-        ];
-
-        $this->validate($request, $rule, $customMessages);
+        $this->validate($request, $rule);
         
         $input = $request->all();
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $foto_ext = $foto->getClientOriginalExtension();
+            $foto_name = Str::random(8);
+
+        $upload_path = 'assets/admin';
+        $imagename = $upload_path.'/'.$foto_name.'.'.$foto_ext;
+        $request->file('foto')->move($upload_path,$imagename);
+
+        $input['foto'] = $imagename;
+        }
         $status = FasilitasHotel::create($input);
-        if ($status) {
-            return redirect('admin/fasilitashotel')->with('success','Data berhasil ditambahkan');
+        if ($status){
+            return redirect('admin/fasilitashotel')->with('success', 'Data berhasil ditambahkan');
+        }else{
+            return redirect('admin/fasilitashotel/create')->with('error', 'Data gagal ditambahkan');
         }
     }
 
@@ -96,9 +104,9 @@ class FasilitashController extends Controller
     {
         //
         $rule = [
-            'nama_fasilitas => required',
-            'foto => required',
-            'keterangan => required'
+            'nama_fasilitas' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg,tmp,png',
+            'keterangan' => 'required',
         ];
         $customMessages = [
             'nama_fasilitas.required' => 'Field Nama Fasilitas Wajib Diisi!',
@@ -107,7 +115,7 @@ class FasilitashController extends Controller
         ];
 
         $this->validate($request, $rule, $customMessages);
-        
+        $input = $request->all();
         $fasilitashotel = FasilitasHotel::find($id);
         $fasilitashotel->nama_fasilitas = $request->nama_fasilitas;
         $fasilitashotel->foto = $request->foto;
@@ -116,6 +124,8 @@ class FasilitashController extends Controller
         $status = $fasilitashotel->save();
         if ($status) {
             return redirect('admin/fasilitashotel')->with('success','Data berhasil diubah');
+        }else{
+            return redirect('admin/fasilitashotel/form')->with('error', 'Data gagal diubah');
         }
     }
 

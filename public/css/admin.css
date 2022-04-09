@@ -1,6 +1,18 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light {
-  background-color:   #D18CE0 !important;
+  background-color:   #c48bf4 !important;
 }
-/* body {
-  background-color:  #E2DEA9 !important;
-} */
+.card-body {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+  background-color: #dcb9f8;
+}
+h1 {
+  text-align: center;
+}
+.name-room {
+  text-align: center;
+}
+a {
+  color: rebeccapurple;
+  text-decoration: none;
+}

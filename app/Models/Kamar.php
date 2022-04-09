@@ -12,12 +12,12 @@ class Kamar extends Model
     protected $table = 'kamar';
 
     protected $fillable = [
-        'id_fasilitask', 'tipe_kamar', 'foto', 'stok'
+        'tipe_kamar', 'foto', 'stok'
     ]; 
     
-    public function fasilitask()
+    public function kamar()
     {
-        return $this->hasOne(FasilitasKamar::class,'id', 'id_fasilitask');
+        return $this->hasMany(FasilitasKamar::class,'id_kamar', 'id');
     }
 
 }

@@ -22,17 +22,19 @@
                     @foreach ($fasilitashotel as $row)
                     <td>{{$loop->iteration}}</td>
                     <td>{{$row->nama_fasilitas}}</td>
-                    <td>{{$row->foto}}</td>
+                    <td>
+                        <img src="{{url('') . '/' . $row->foto}}" width="100px">
+                    </td>
                     <td>{{$row->keterangan}}</td>
-                    <td class="d-flex">
-                        <a href="{{route('fasilitashotel.edit', $row->id)}}" class="btn btn-warning mr-2" >Edit </a>
+                    <td>
                         <form action="{{ route('fasilitashotel.destroy',$row->id) }}" method="POST">
+                            <a href="{{route('fasilitashotel.edit', $row->id)}}" class="btn btn-warning mr-2" >Edit </a>
                             @csrf
                             @method('DELETE')
-
                             <button type="submit" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
                         </form>   
-                </tbody>
+                    </td>
+                </tbody> 
                     @endforeach
             </table>
         </div>

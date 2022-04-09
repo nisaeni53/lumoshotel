@@ -7,10 +7,11 @@
                 <img src="image/imgutama.png" alt="" style="width: 100%">
             </div> --}}
             <div class="judul">
-                <h1>Enjoy Your Dream Vacation</h1>
+                <h1>Selamat Datang di Lumos Hotel</h1>
             </div>
             <div class="subjudul mt-4">
-                <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, eos repellendus dolore nesciunt facilis</h5>
+                <h5>Lumos Hotel, merupakan salah satu hotel terbaik di kota Bandung yang dekat dengan pusat kota. 
+                    Didukung dengan kolam renang serta fasilitas lainnya akan membuat liburan Anda semakin menyenangkan.</h5>
             </div>
         </div>
         <div class="check-form">
@@ -28,7 +29,8 @@
                                 <input type="date" class="form-control form-control-lg" name="" id="check-out">
                             </div>
                             <div class="col-2">
-                                <button class="btn btn-primary mt-4">Masuk</button>
+                                <a href="{{route('landing.create')}}" class="btn btn-primary mt-4"> Pesan </a>
+                                {{-- <button class="btn btn-primary mt-4">Pesan</button> --}}
                             </div>
                         </div>
                     </div>
@@ -38,8 +40,9 @@
         </div>
         <div class="pilih-ruangan mt-5">
             <div class="title">
-                <h1><center>Entire Room of Choice</center></h1>
+                <h1><center>Pilihan Kamar</center></h1>
             </div>
+            @foreach ($kamar as $item)
             <div class="choice-room mt-3">
                 <div class="row">
                     <div class="col-4">
@@ -49,7 +52,7 @@
                                 <p class="card-text">
                                     <h5 class="price">Rp 15.000</h5>
                                     <div class="information-room d-flex">
-                                        <h4 class="name-room">Signature Room</h4>
+                                        <h4 class="name-room">{{$item->tipe_kamar}}</h4>
                                         <p class="btnselengkapnya">
                                             <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 Selengkapnya
@@ -58,21 +61,25 @@
                                     </div>
                                     <div class="collapse" id="collapse1">
                                         <div class="card card-body">
-                                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                            @if (@$fasilitaskamar)
+                                            @foreach ($fasilitaskamar as $item)
+                                            {{$item->nama_fasilitas}}, 
+                                            @endforeach
+                                            @endif 
                                         </div>
                                     </div>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    {{-- <div class="col-4">
                         <div class="card">
                             <img src="{{asset('image/')}}/kamar2.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">
                                     <h5 class="price">Rp 15.000</h5>
                                     <div class="information-room d-flex">
-                                        <h4 class="name-room">Signature Room</h4>
+                                        <h4 class="name-room">Superior</h4>
                                         <p class="btnselengkapnya">
                                             <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 Selengkapnya
@@ -81,7 +88,11 @@
                                     </div>
                                     <div class="collapse" id="collapse2">
                                         <div class="card card-body">
-                                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                            Tipe kamar ini paling dasar yang dimiliki hotel. 
+                                            Harga yang ditawarkan dari tipe kamar ini biasanya mempunyai harga paling murah jika dibandingkan tipe kamar lainnya. 
+                                            Luas ruangannya juga hanya sekitar 30 meter persegi. 
+                                            Bicara soal fasilitas penginapan di kamar ini biasanya akan berbeda-beda tergantung pada tingkat atau klasifikasi hotel, terutama pada hotel berbintang. 
+                                            Fasilitas yang disediakan tipe Standar, yaitu:
                                         </div>
                                     </div>
                                 </p>
@@ -95,7 +106,7 @@
                                 <p class="card-text">
                                     <h5 class="price">Rp 15.000</h5>
                                     <div class="information-room d-flex">
-                                        <h4 class="name-room">Signature Room</h4>
+                                        <h4 class="name-room">Deluxe</h4>
                                         <p class="btnselengkapnya">
                                             <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 Selengkapnya
@@ -110,33 +121,34 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
+        @endforeach
         <div class="facility mt-5">
             <div class="row">
                 <div class="col-6">
                     <div class="title">
-                        <h1 style="font-weight: bolder">What you Get</h1>
-                        <h5 style="font-weight:400;">lorem ipsum dolor sit amet, constrecture cipslicing elit sed efencict, libero</h5>
+                        <h1 style="font-weight: bolder">Yang anda dapatkan</h1>
+                        <h5 style="font-weight:400;">Anda akan mendapatkan semua fasilitas ini di Lumos Hotel</h5>
                     </div>
                     <div class="name-facility mt-4">
                         <div class="facility-1 d-flex mt-2">
                             <img src="{{asset('image/')}}/pantai.png" alt="" height="30">
-                            <h5 style="font-weight:400;"> Beach </h5>
+                            <h5 style="font-weight:400;"> Pantai </h5>
                         </div>
                         <div class="facility-2 d-flex mt-2">
                             <img src="{{asset('image/')}}/pool.png" alt="" height="30">
-                            <h5 style="font-weight:400;"> Infinity Pool </h5>
+                            <h5 style="font-weight:400;"> Kolam Renang </h5>
                         </div>
                         <div class="facility-3 d-flex mt-2">
                             <img src="{{asset('image/')}}/nicefoood.png" alt="" height="30">
-                            <h5 style="font-weight:400;"> Nice Food </h5>
+                            <h5 style="font-weight:400;"> Sarapan </h5>
                         </div>
                         <div class="facility-4 d-flex mt-2">
                             <img src="{{asset('image/')}}/campfire.png" alt="" height="30">
-                            <h5 style="font-weight:400;"> Campfire </h5>
+                            <h5 style="font-weight:400;"> Perkemahan </h5>
                         </div>
                     </div>
                 </div>

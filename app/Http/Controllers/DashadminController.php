@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FasilitasKamar;
-use App\Models\Kamar;
 use Illuminate\Http\Request;
 
-class LandingController extends Controller
+class DashadminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,8 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $data['kamar'] = Kamar::all();
-        $data['fasilitaskamar'] = FasilitasKamar::all();
-        return view('user.landing', $data);
+        //
+        return view('admin.dashboard');
     }
 
     /**
@@ -27,7 +24,7 @@ class LandingController extends Controller
      */
     public function create()
     {
-        return view('user.formchekin');
+        //
     }
 
     /**

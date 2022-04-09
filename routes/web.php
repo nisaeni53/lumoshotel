@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashadminController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\FasilitaskController;
 use App\Http\Controllers\FasilitashController;
@@ -34,9 +35,12 @@ Route::resource('/landing', LandingController::class);
 // });
 
 Route::group(['middleware' => ['auth','cekrole:admin']], function () {
+    Route::resource('/admin/dashboard', DashadminController::class);
     Route::resource('/admin/kamar', KamarController::class);
     Route::resource('/admin/fasilitaskamar', FasilitaskController::class);
     Route::resource('/admin/fasilitashotel', FasilitashController::class);
+    Route::get('/admin/fasilitaskamar/{id_produk}/create', [FasilitaskController::class, 'createWithKamar']);
+    Route::post('/admin/fasilitaskamar/{id_produk}', [FasilitaskController::class, 'storeWithKamar']);
 });
 
 Route::group(['middleware' => ['auth','cekrole:resepsionis']], function () {

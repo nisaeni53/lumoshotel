@@ -1,59 +1,40 @@
-@extends('admin.layout.app')
+@extends('resepsionis.layout.app')
 @section('content')
 
 <div class="container">
     <div class="card mt-5">
-        <div class="card-head">
-            <div class="card-title">
-                <h1>Table Resepsionis</h1>
+            <div class="card-header d-flex">
+                <h1 class="card-title">Table Resepsionis Hotel</h1>
             </div>
-        </div>
         <div class="card-body">
             <table class="table table-striped">
                 <thead class="table-dark">
                     <tr>
-                        <th>Id pinjam</th>
-                        <th>Nama Barang</th>
-                        <th>Jumlah pinjam</th>
-                        <th>Tanggal pinjam</th>
-                        <th>Tanggal kembali</th>
+                        <th>Id</th>
+                        <th>Nama Fasilitas</th>
+                        <th>Foto</th>
+                        <th>Keterangan</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td> 01 </td>
-                        <td>Buku</td>
-                        <td> 100 </td>
-                        <td>10-1-2021</td>
-                        <td>12-1-2021</td>
-                    </tr>
-                    <tr>
-                        <td> 02 </td>
-                        <td>Infocus</td>
-                        <td> 100 </td>
-                        <td>10-1-2021</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td> 03 </td>
-                        <td>Printer</td>
-                        <td> 100 </td>
-                        <td>10-1-2021</td>
-                        <td>12-1-2021</td>
-                    </tr>
-                    <tr>
-                        <td> 04 </td>
-                        <td>Laptop</td>
-                        <td> 100 </td>
-                        <td>10-1-2021</td>
-                        <td>-</td>
-                    </tr>
+                {{-- <tbody>
+                    @foreach ($fasilitashotel as $row)
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$row->nama_fasilitas}}</td>
+                    <td>{{$row->foto}}</td>
+                    <td>{{$row->keterangan}}</td>
+                    <td class="d-flex">
+                        <a href="{{route('fasilitashotel.edit', $row->id)}}" class="btn btn-warning mr-2" >Edit </a>
+                        <form action="{{ route('fasilitashotel.destroy',$row->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                        </form>   
                 </tbody>
+                    @endforeach --}}
             </table>
         </div>
     </div>
 </div>
-
-
-    
 @endsection

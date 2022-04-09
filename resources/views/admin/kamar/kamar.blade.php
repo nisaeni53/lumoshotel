@@ -12,8 +12,8 @@
                 <thead class="table-dark">
                     <tr>
                         <th>Id Kamar</th>
-                        <th>Id Fasilitas Kamar</th>
                         <th>Tipe kamar</th>
+                        <th>Tersedia</th>
                         <th>Foto</th>
                         <th>Action</th>
                     </tr>
@@ -21,8 +21,8 @@
                 <tbody>
                     @foreach ($kamar as $row)
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$row->id_fasilitask}}</td>
-                    <td>{{$row->tipe_kamar}}</td> 
+                    <td>{{$row->tipe_kamar}}</td>
+                    <td>{{$row->stok}}</td>
                     <td>
                         <img src="{{url('') . '/' . $row->foto}}" width="100px">
                     </td>
@@ -34,7 +34,6 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>   
                     </td>
-                    <td>
                 </tbody>
                     @endforeach
             </table>

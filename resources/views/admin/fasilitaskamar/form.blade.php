@@ -5,33 +5,27 @@
     <div class="card mt-5">
         <div class="card-head">
             <div class="card-title">
-                {{@$fasilitaskamar ? 'Ubah' : 'Tambah'}} Fasilitas Kamar
-                <h1>Form Fasilitas Kamar</h1>
+                <h1>{{@$fasilitaskamar ? 'Ubah' : 'Tambah'}} Fasilitas Kamar</h1>
             </div>
         </div>
         <div class="card-body">
-            <form class="form" action="{{@$fasilitaskamar ? route('fasilitaskamar.update',$fasilitaskamar->id) : route('fasilitaskamar.store')}}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{@$fasilitaskamar ? route('fasilitaskamar.update',@$fasilitaskamar->id) : url('admin/fasilitaskamar/{id_kamar}'. @$fasilitaskamar->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if(@$fasilitaskamar)
                     {{method_field('patch')}}
                 @endif
-                <div class="mb-3">
-                  <label for="nama_fasilitas" class="form-label">Nama Fasilitas</label>
-                  <input type="text" class="form-control" id="nama_fasilitas" aria-describedby="emailHelp" 
-                  name="nama_fasilitas" value="{{old('nama_fasilitas', @$fasilitaskamar ? $fasilitaskamar->nama_fasilitas : '')}}">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="foto" class="form-label">Foto</label>
-                    <input type="file" class="form-control" id="foto" name="foto"
-                    value="{{old('foto', @$fasilitaskamar ? $fasilitaskamar->foto : '')}}">
-                </div>
-                @if(@$fasilitaskamar)
-                    <div class="mb-3">
-                            <img src="{{url('') . '/' . $fasilitaskamar->foto}}" width="17%" height="5%">
-                    </div>
+
+                @if (!@$fasilitaskamar)
                 @endif
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <label for="id_kamar" class="form-label">Tipe Kamar</label>
+                  <input type="text" name="" class="form-control" value="{{$kamar[0]->tipe_kamar}}" disabled>
+                  <input type="hidden" name="id_kamar" class="form-control" value="{{@$fasilitaskamar ? $fasilitaskamar->id_kamar : $kamar[0]->id }}">
+                <div class="mt-3">
+                    <label for="nama_fasilitas" class="form-label">Nama Fasilitas</label>
+                    <input type="text" class="form-control" id="nama_fasilitas" aria-describedby="emailHelp" 
+                    name="nama_fasilitas" value="{{old('nama_fasilitas', @$fasilitaskamar ? $fasilitaskamar->nama_fasilitas : '')}}">
+                  </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </form>
         </div>
     </div>
