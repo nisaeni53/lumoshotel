@@ -35,8 +35,11 @@
                                     <label for="Kamar" class="form-label">Type Kamar</label>
                                     <select class="select form-control" name="" id="Kamar">
                                         <option value="">-- Pilih Kamar --</option>
-                                        <option value="Duluxe">Duluxe</option>
-                                        <option value="Classic">Classic</option>
+                                        @foreach ($kamar as $row)
+                                            <option value="{{$row->id}}">
+                                                {{$row->tipe_kamar}}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-6">

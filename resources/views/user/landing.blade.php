@@ -10,8 +10,9 @@
                 <h1>Selamat Datang di Lumos Hotel</h1>
             </div>
             <div class="subjudul mt-4">
-                <h5>Lumos Hotel, merupakan salah satu hotel terbaik di kota Bandung yang dekat dengan pusat kota. 
-                    Didukung dengan kolam renang serta fasilitas lainnya akan membuat liburan Anda semakin menyenangkan.</h5>
+                <h5>
+                    Lumos Hotel, terdapat layanan penjemputan ke bandara, kolam renang, serta wifi gratis untuk para penghuninya. Pesan sekarang juga!!
+                </h5>
             </div>
         </div>
         <div class="check-form">
@@ -42,9 +43,9 @@
             <div class="title">
                 <h1><center>Pilihan Kamar</center></h1>
             </div>
-            @foreach ($kamar as $item)
             <div class="choice-room mt-3">
                 <div class="row">
+                    @foreach ($kamar as $item)
                     <div class="col-4">
                         <div class="card">
                             <img src="{{asset('image/')}}/kamar1.png" class="card-img-top" alt="...">
@@ -54,6 +55,7 @@
                                     <div class="information-room d-flex">
                                         <h4 class="name-room">{{$item->tipe_kamar}}</h4>
                                         <p class="btnselengkapnya">
+                                            @if (@$fasilitaskamar)
                                             <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 Selengkapnya
                                             </a>
@@ -61,9 +63,10 @@
                                     </div>
                                     <div class="collapse" id="collapse1">
                                         <div class="card card-body">
-                                            @if (@$fasilitaskamar)
-                                            @foreach ($fasilitaskamar as $item)
-                                            {{$item->nama_fasilitas}}, 
+                                            @foreach ($fasilitaskamar as $row)
+                                                <option value="{{$row->id_kamar}}">
+                                                {{$row->nama_fasilitas}}
+                                                </option>
                                             @endforeach
                                             @endif 
                                         </div>
@@ -72,60 +75,10 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-4">
-                        <div class="card">
-                            <img src="{{asset('image/')}}/kamar2.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">
-                                    <h5 class="price">Rp 15.000</h5>
-                                    <div class="information-room d-flex">
-                                        <h4 class="name-room">Superior</h4>
-                                        <p class="btnselengkapnya">
-                                            <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                Selengkapnya
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="collapse" id="collapse2">
-                                        <div class="card card-body">
-                                            Tipe kamar ini paling dasar yang dimiliki hotel. 
-                                            Harga yang ditawarkan dari tipe kamar ini biasanya mempunyai harga paling murah jika dibandingkan tipe kamar lainnya. 
-                                            Luas ruangannya juga hanya sekitar 30 meter persegi. 
-                                            Bicara soal fasilitas penginapan di kamar ini biasanya akan berbeda-beda tergantung pada tingkat atau klasifikasi hotel, terutama pada hotel berbintang. 
-                                            Fasilitas yang disediakan tipe Standar, yaitu:
-                                        </div>
-                                    </div>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <img src="{{asset('image/')}}/kamar3.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">
-                                    <h5 class="price">Rp 15.000</h5>
-                                    <div class="information-room d-flex">
-                                        <h4 class="name-room">Deluxe</h4>
-                                        <p class="btnselengkapnya">
-                                            <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                Selengkapnya
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="collapse" id="collapse3">
-                                        <div class="card card-body">
-                                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                        </div>
-                                    </div>
-                                </p>
-                            </div>
-                        </div>
-                    </div> --}}
+                    @endforeach
                 </div>
             </div>
         </div>
-        @endforeach
         <div class="facility mt-5">
             <div class="row">
                 <div class="col-6">

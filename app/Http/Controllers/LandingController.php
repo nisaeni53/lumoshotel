@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FasilitasHotel;
 use App\Models\FasilitasKamar;
 use App\Models\Kamar;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class LandingController extends Controller
     {
         $data['kamar'] = Kamar::all();
         $data['fasilitaskamar'] = FasilitasKamar::all();
+        $data['fasilitashotel'] = FasilitasHotel::all();
         return view('user.landing', $data);
     }
 
@@ -27,7 +29,8 @@ class LandingController extends Controller
      */
     public function create()
     {
-        return view('user.formchekin');
+        $data['kamar'] = Kamar::all();
+        return view('user.formchekin', $data);
     }
 
     /**
@@ -61,6 +64,11 @@ class LandingController extends Controller
     public function edit($id)
     {
         //
+        $fasilitaskamar = FasilitasKamar::find($id);
+        $data['fasilitaskamar'] = FasilitasKamar::all();
+        $data['kamar'] = Kamar::all();
+        $data['fasilitaskamar'] = $fasilitaskamar;
+        return view('user.landing', $data);
     }
 
     /**
