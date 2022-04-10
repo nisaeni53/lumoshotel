@@ -16,10 +16,11 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $data['kamar'] = Kamar::all();
+        $kamar = Kamar::get();
         $data['fasilitaskamar'] = FasilitasKamar::all();
         $data['fasilitashotel'] = FasilitasHotel::all();
-        return view('user.landing', $data);
+        // dd($kamar);
+        return view('user.landing', $data, ['kamar' => $kamar]);
     }
 
     /**

@@ -15,7 +15,7 @@ class Kamar extends Model
         'tipe_kamar', 'foto', 'stok'
     ]; 
     
-    public function kamar()
+    public function fasilitaskamar()
     {
         return $this->hasMany(FasilitasKamar::class,'id_kamar', 'id');
     }
