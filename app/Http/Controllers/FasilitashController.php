@@ -117,11 +117,18 @@ class FasilitashController extends Controller
         $this->validate($request, $rule, $customMessages);
         $input = $request->all();
         $fasilitashotel = FasilitasHotel::find($id);
-        $fasilitashotel->nama_fasilitas = $request->nama_fasilitas;
-        $fasilitashotel->foto = $request->foto;
-        $fasilitashotel->keterangan = $request->keterangan;
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $foto_ext = $foto->getClientOriginalExtension();
+            $foto_name = Str::random(8);
 
-        $status = $fasilitashotel->save();
+            $upload_path = 'assets/admin';
+            $imagename = $upload_path.'/'.$foto_name.'.'.$foto_ext;
+            $request->file('foto')->move($upload_path,$imagename);
+
+            $input['foto'] = $imagename;
+        }
+        $status = $fasilitashotel->update($input);
         if ($status) {
             return redirect('admin/fasilitashotel')->with('success','Data berhasil diubah');
         }else{

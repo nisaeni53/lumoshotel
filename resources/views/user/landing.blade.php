@@ -45,7 +45,13 @@
             </div>
             <div class="choice-room mt-3">
                 <div class="row">
+                    @php
+                        $fas = 0;
+                    @endphp
                     @foreach ($kamar as $item)
+                    @php
+                        $fas++;
+                    @endphp
                     <div class="col-4">
                         <div class="card">
                             <img src="{{asset('image/')}}/kamar1.png" class="card-img-top" alt="...">
@@ -56,18 +62,18 @@
                                         <h4 class="name-room">{{$item->tipe_kamar}}</h4>
                                         <p class="btnselengkapnya">
                                             @if (@$fasilitaskamar)
-                                            <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapse{{$fas}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 Selengkapnya
                                             </a>
                                         </p>
                                     </div>
-                                    <div class="collapse" id="collapse1">
+                                    <div class="collapse" id="collapse{{$fas}}">
                                         <div class="card card-body">
-                                            @foreach ($fasilitaskamar as $row)
-                                                <option value="{{$row->id_kamar}}">
-                                                {{$row->nama_fasilitas}}
+                                            @for ($i = 0; $i < count($item->fasilitaskamar); $i++)
+                                                <option value="">
+                                                    {{$item->fasilitaskamar[$i]->nama_fasilitas}}
                                                 </option>
-                                            @endforeach
+                                            @endfor
                                             @endif 
                                         </div>
                                     </div>

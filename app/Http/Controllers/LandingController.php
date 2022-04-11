@@ -16,11 +16,12 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $kamar = Kamar::get();
+        $fasilitask = Kamar::get();
+        $data['kamar'] = Kamar::all();
         $data['fasilitaskamar'] = FasilitasKamar::all();
         $data['fasilitashotel'] = FasilitasHotel::all();
         // dd($kamar);
-        return view('user.landing', $data, ['kamar' => $kamar]);
+        return view('user.landing', $data, ['fasilitask' => $fasilitask]);
     }
 
     /**
@@ -93,5 +94,14 @@ class LandingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function landing($id){
+        $fasilitask = Kamar::where('id', $id)->get();
+        $data['kamar'] = Kamar::all();
+        $data['fasilitaskamar'] = FasilitasKamar::all();
+        $data['fasilitashotel'] = FasilitasHotel::all();
+        dd($fasilitask);
+        return view('user.landing', $data, ['fasilitask' => $fasilitask]);
     }
 }

@@ -20,10 +20,10 @@
                             <div class="card-title mt-2">
                                 <h1>Check-In</h1>
                             </div>
-                            <div class="card-info">
-                                <p>Pesan hotel lumos sekarang juga</p>
-                            </div>
                             <label for="nama_pemesan" class="form-label">Nama Pemesan</label>
+                                <input type="text" class="form-control" id="nama_pemesan" aria-describedby="emailHelp" 
+                                name="nama_fasilitas">
+                            <label for="nama_pemesan" class="form-label">Nomor Telepon</label>
                                 <input type="text" class="form-control" id="nama_pemesan" aria-describedby="emailHelp" 
                                 name="nama_fasilitas">
                             <label for="check-in" class="form-label mt-1">Check-In</label>
