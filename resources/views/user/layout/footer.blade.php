@@ -27,7 +27,7 @@
           <h5>Halaman</h5>
           <ul class="list-unstyled">
             <li class="mb-2"><a href={{route('dashboard.index')}}>Admin</a></li>
-            <li class="mb-2"><a href={{route('index.index')}}>Resepsionis</a></li>
+            <li class="mb-2"><a href={{route('search')}}>Resepsionis</a></li>
           </ul>
         </div>
         <div class="col-6 col-lg-2 offset-lg-1 mb-3">
