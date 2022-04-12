@@ -7,7 +7,8 @@
                 <h1 class="card-title">Table Resepsionis Hotel</h1>
                 <form class="form" method="get" action="{{ route('search') }}" style="margin-left: 38%">
                     <div class="form-group w-100 mb-3">
-                        <input type="text" name="search" id="search" placeholder="Masukkan keyword" value="{{ $keyword }}">
+                        <input class="form-control" type="date" name="date" id="date">
+                        <input class="form-control" type="text" name="search" id="search" placeholder="Masukkan keyword" value="{{ $keyword }}">
                         <button type="submit">Cari</button>
                     </div>
                 </form>

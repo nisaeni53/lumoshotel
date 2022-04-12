@@ -46,12 +46,8 @@
                     </td>
                     <td>{{$row->keterangan}}</td>
                     <td>
-                        <form action="{{ route('fasilitashotel.destroy',$row->id) }}" method="POST">
-                            <a href="{{route('fasilitashotel.edit', $row->id)}}" class="btn btn-warning mr-2" >Edit </a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" class="btn btn-danger" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$i}}">Delete</button>
-                        </form>   
+                        <a href="{{route('fasilitashotel.edit', $row->id)}}" class="btn btn-warning mr-2" >Edit </a>
+                        <button type="button" class="btn btn-danger" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$i}}">Delete</button>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal{{$i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -64,8 +60,12 @@
                                     ...
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <form action="{{ route('fasilitashotel.destroy',$row->id) }}" method="POST">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </form>   
                                 </div>
                                 </div>
                             </div>

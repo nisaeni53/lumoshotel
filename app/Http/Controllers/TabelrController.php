@@ -25,8 +25,9 @@ class TabelrController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $pemesanan = Pemesanan::where('nama_pemesan', 'like', "%" . $keyword . "%")->paginate(5);
-        return view('resepsionis.tabelr', compact('pemesanan', 'keyword'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $date = $request->get('date');
+        $pemesanan = Pemesanan::where('nama_pemesan', 'like', "%" . $keyword . "%")->whereDate('check_in', '=' , $date)->paginate(5);
+        return view('resepsionis.tabelr', compact('pemesanan', 'keyword', 'date'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
