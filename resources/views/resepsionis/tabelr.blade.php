@@ -45,7 +45,7 @@
                             <button type="submit" class="btn btn-danger">Check in</button>
                         </form>
                         @elseif ($row->status == 2)
-                        <form action="{{ route('landing.update',$row->id) }}" name="status" method="POST">
+                        <form action="{{ route('index.update',$row->id) }}" name="status" method="POST">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" name="status" value="3">

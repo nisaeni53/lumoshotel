@@ -111,12 +111,6 @@ class LandingController extends Controller
     public function update(Request $request, $id, Pemesanan $pemesanan)
     {
         //
-        $pemesanan = Pemesanan::findOrFail($id);
-        $items = Pemesanan::where('id', $id)->update([
-            'status' => $request->status
-        ]);
-        return redirect()->route('index.index')
-                        ->with('pemesanan Disetujui');
     }
 
     /**

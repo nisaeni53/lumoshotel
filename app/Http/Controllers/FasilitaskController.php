@@ -115,16 +115,16 @@ class FasilitaskController extends Controller
         $this->validate($request, $rule, $customMessages);
         $input = $request->all();
 
-        $fasilitaskamar = fasilitaskamar::find($id);
+        $fasilitaskamar = FasilitasKamar::find($id);
         $fasilitaskamar->id_kamar= $request->id_kamar;
         $fasilitaskamar->nama_fasilitas = $request->nama_fasilitas;
 
 
         $status = $fasilitaskamar->save();
         if ($status){
-            return redirect('/admin/fasilitaskamar/'.$request->id_kamar.'/')->with('success', 'Data berhasil diubah');
+            return redirect('/admin/kamar/'.$request->id_kamar.'/edit')->with('success', 'Data berhasil diubah');
         }else{
-            return redirect('/admin/fasilitaskamar/'.$request->id_kamar.'/edit')->with('error', 'Data gagal diubah');
+            return redirect('/admin/kamar/'.$request->id_kamar.'/edit')->with('error', 'Data gagal diubah');
         }
     }
 
@@ -134,10 +134,10 @@ class FasilitaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FasilitasKamar $fasilitaskamar)
+    public function destroy(FasilitasKamar $fasilitaskamar, Request $request)
     {
         $fasilitaskamar->delete();
-        return redirect('admin/fasilitaskamar')->with('success','Fasilitass Berhasil di Hapus');
+        return redirect('/admin/kamar/'.$request->id_kamar.'/edit')->with('success','Fasilitas Hotel Berhasil di Hapus');
     }
 
     public function createWithKamar($id){

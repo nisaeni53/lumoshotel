@@ -62,9 +62,9 @@ class FasilitashController extends Controller
         }
         $status = FasilitasHotel::create($input);
         if ($status){
-            return redirect('admin/fasilitashotel')->with('success', 'Data berhasil ditambahkan');
+            return redirect('admin/fasilitashotel')->with('success', 'Data Fasilitas Hotel berhasil ditambahkan');
         }else{
-            return redirect('admin/fasilitashotel/create')->with('error', 'Data gagal ditambahkan');
+            return redirect('admin/fasilitashotel/create')->with('error', 'Data Fasilitas Hotel gagal ditambahkan');
         }
     }
 
@@ -130,9 +130,9 @@ class FasilitashController extends Controller
         }
         $status = $fasilitashotel->update($input);
         if ($status) {
-            return redirect('admin/fasilitashotel')->with('success','Data berhasil diubah');
+            return redirect('admin/fasilitashotel')->with('success','Data Fasilitas Hotel berhasil diubah');
         }else{
-            return redirect('admin/fasilitashotel/form')->with('error', 'Data gagal diubah');
+            return redirect('admin/fasilitashotel/form')->with('error', 'Data Fasilitas Hotel gagal diubah');
         }
     }
 
@@ -146,6 +146,6 @@ class FasilitashController extends Controller
     {
         //
         $fasilitashotel->delete();
-        return redirect('admin/fasilitashotel')->with('success','Fasilitas Berhasil di Hapus');
+        return redirect('admin/fasilitashotel')->with('success','Fasilitas Hotel Berhasil di Hapus');
     }
 }

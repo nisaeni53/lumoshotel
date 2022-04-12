@@ -47,17 +47,17 @@
                     <td>{{$row->keterangan}}</td>
                     <td>
                         <a href="{{route('fasilitashotel.edit', $row->id)}}" class="btn btn-warning mr-2" >Edit </a>
-                        <button type="button" class="btn btn-danger" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$i}}">Delete</button>
+                        <button type="button" class="btn btn-danger" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$i}}">Hapus</button>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal{{$i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">{{$row->nama_fasilitas}}</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Yakin Ingin Menghapus Data ini?</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+                                    {{$row->nama_fasilitas}}
                                 </div>
                                 <div class="modal-footer">
                                     <form action="{{ route('fasilitashotel.destroy',$row->id) }}" method="POST">

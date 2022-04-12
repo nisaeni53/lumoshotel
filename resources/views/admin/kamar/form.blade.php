@@ -83,30 +83,30 @@
                                 <td>{{$row->kamar->tipe_kamar}}</td>
                                 <td>{{$row->nama_fasilitas}}</td>
                                 <td>
-                                    <form action="{{ route('fasilitaskamar.destroy',$row->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                        <a href="{{route('fasilitaskamar.edit', $row->id)}}" class="btn btn-warning" >Edit </a>
-                                        <button type="submit" class="btn btn-danger" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$i}}">Delete</button>
-                                    </form>  
+                                    <a href="{{route('fasilitaskamar.edit', $row->id)}}" class="btn btn-warning mr-2" >Edit </a>
+                                    <button type="button" class="btn btn-danger" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$i}}">Hapus</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal{{$i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">{{$row->nama_fasilitas}}</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Yakin Ingin Menghapus Data ini?</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                {{$row->nama_fasilitas}}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                <form action="{{ route('fasilitaskamar.destroy',$row->id) }}" method="POST">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                </form>   
                                             </div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </td>
                         </tbody>
                             @endforeach

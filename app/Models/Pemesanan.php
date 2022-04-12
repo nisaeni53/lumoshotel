@@ -11,7 +11,7 @@ class Pemesanan extends Model
     protected $table = 'pemesanan';
 
     protected $fillable = [
-        'id_kamar', 'nama_pemesan', 'nomor_telepon', 'check_in', 'check_out', 'jumlah_kamar', 'status'
+        'id_kamar', 'nama_pemesan', 'nomor_telepon', 'check_in', 'check_out', 'jumlah_kamar','harga_total', 'status'
     ]; 
     
     public function kamar()
