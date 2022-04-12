@@ -16,35 +16,45 @@
             <div class="col-5">
                 <div class="card card-checkin mt-4">
                     <div class="card-body">
+                        <form class="form" action="{{@$landing ? route('landing.update',@$landing->id) : route('landing.store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @if(@$landing)
+                                {{method_field('patch')}}
+                            @endif
                         <div class="container">
                             <div class="card-title mt-2">
                                 <h1>Check-In</h1>
                             </div>
                             <label for="nama_pemesan" class="form-label">Nama Pemesan</label>
                                 <input type="text" class="form-control" id="nama_pemesan" aria-describedby="emailHelp" 
-                                name="nama_fasilitas">
+                                name="nama_pemesan">
                             <label for="nama_pemesan" class="form-label">Nomor Telepon</label>
-                                <input type="text" class="form-control" id="nama_pemesan" aria-describedby="emailHelp" 
-                                name="nama_fasilitas">
+                                <input type="number" class="form-control" id="nama_pemesan" aria-describedby="emailHelp" 
+                                name="nomor_telepon">
                             <label for="check-in" class="form-label mt-1">Check-In</label>
-                                <input type="date" class="form-control form-control-lg" name="" id="check-in">
+                                <input type="date" class="form-control form-control-lg" name="check_in" id="check-in">
                             <label for="check-out" class="form-label mt-1">Check-Out</label>
-                                <input type="date" class="form-control form-control-lg" name="" id="check-out">
+                                <input type="date" class="form-control form-control-lg" name="check_out" id="check-out">
                             <div class="row mt-1">
                                 <div class="col-6">
-                                    <label for="Kamar" class="form-label">Type Kamar</label>
-                                    <select class="select form-control" name="" id="Kamar">
+                                    <label for="id_kamar" class="form-label">Type Kamar</label>
+                                    <select class="select form-control" name="id_kamar" id="Kamar">
                                         <option value="">-- Pilih Kamar --</option>
                                         @foreach ($kamar as $row)
-                                            <option value="{{$row->id}}">
+                                            <option value="{{$row->id}}" {{@$pemesanan->id_kamar == $row->id ? "selected" : "" }}>
                                                 {{$row->tipe_kamar}}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-6">
-                                    <label for="Jumlah" class="form-label">Jumlah</label>
-                                    <input type="text" class="form-control" id="Jumlah" name="nama_fasilitas">
+                                    <label for="jumlah_kamar" class="form-label">Jumlah</label>
+                                    <input type="text" class="form-control" id="jumlah_kamar" name="jumlah_kamar">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <input type="hidden" name="status" value="1">
                                 </div>
                             </div>
                             <div class="ini-harga mt-2" style="text-align: right">
@@ -52,6 +62,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary form-control">Simpan</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -137,7 +137,7 @@ class FasilitaskController extends Controller
     public function destroy(FasilitasKamar $fasilitaskamar)
     {
         $fasilitaskamar->delete();
-        return redirect('admin/fasilitaskamar')->with('succes','Siswa Berhasil di Hapus');
+        return redirect('admin/fasilitaskamar')->with('success','Fasilitass Berhasil di Hapus');
     }
 
     public function createWithKamar($id){

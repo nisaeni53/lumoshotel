@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FasilitasHotel;
 use App\Models\FasilitasKamar;
 use App\Models\Kamar;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -44,6 +45,33 @@ class LandingController extends Controller
     public function store(Request $request)
     {
         //
+        $rule = [
+            'id_kamar => required',
+            'nama_pemesan => required',
+            'nomor_telepon => required',
+            'check_in => required',
+            'check_out => required',
+            'jumlah_kamar => required',
+
+        ];
+        $customMessages = [
+            'id_kamar.required' => 'Field Nama Fasilitas Wajib Diisi',
+            'nama_pemesan.required' => 'Field Nama Fasilitas Wajib Diisi',
+            'nomor_telepon.required' => 'Field Nama Fasilitas Wajib Diisi',
+            'check_in.required' => 'Field Nama Fasilitas Wajib Diisi',
+            'check_out.required' => 'Field Nama Fasilitas Wajib Diisi',
+            'jumlah_kamar.required'  => 'Field Nama Fasilitas Wajib Diisi',
+        ];
+
+        $this->validate($request, $rule, $customMessages);
+        $input = $request->all();
+
+        $status = Pemesanan::create($input);
+        if ($status){
+            return redirect('/user/cetak')->with('success', 'Data berhasil diubah');
+        }else{
+            return redirect('/user/formcheckin')->with('error', 'Data gagal diubah');
+        }
     }
 
     /**
@@ -80,9 +108,15 @@ class LandingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Pemesanan $pemesanan)
     {
         //
+        $pemesanan = Pemesanan::findOrFail($id);
+        $items = Pemesanan::where('id', $id)->update([
+            'status' => $request->status
+        ]);
+        return redirect()->route('index.index')
+                        ->with('pemesanan Disetujui');
     }
 
     /**

@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/landing', LandingController::class);
+Route::resource('/landing', LandingController::class); 
 
 // Route::group(['middleware' => ['auth','cekrole:admin,resepsionis']], function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -45,5 +45,6 @@ Route::group(['middleware' => ['auth','cekrole:admin']], function () {
 
 Route::group(['middleware' => ['auth','cekrole:resepsionis']], function () {
     Route::resource('/resepsionis/index', TabelrController::class);
+    Route::get('/resepsionis/index', [TabelrController::class, 'search'])->name('search');
 });
 

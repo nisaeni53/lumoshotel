@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('pemesanan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_kamar');
+            $table->string('nama_pemesan');
+            $table->string('nomor_telepon');
+            $table->date('check_in');
+            $table->date('check_out');
+            $table->integer('jumlah_kamar');
+            $table->integer('status');
             $table->timestamps();
         });
     }

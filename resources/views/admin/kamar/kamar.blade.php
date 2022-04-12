@@ -15,6 +15,7 @@
                         <th>Tipe kamar</th>
                         <th>Tersedia</th>
                         <th>Foto</th>
+                        <th>Harga</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                     <td>
                         <img src="{{url('') . '/' . $row->foto}}" width="100px">
                     </td>
+                    <td>{{$row->harga}}</td>
                     <td>
                         <form action="{{ route('kamar.destroy',$row->id) }}" method="POST">
                             @csrf

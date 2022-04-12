@@ -1,6 +1,19 @@
 @extends('admin.layout.app')
 @section('content')
-
+@if(session('success'))
+    <div class="container">
+        <div class="alert alert-success mt-2" role="alert">
+            {{session('success')}}
+        </div>
+    </div>
+@endif
+@if(session('error'))
+    <div class="container">
+        <div class="alert alert-danger mg-2" role="alert">
+            {{session('error')}}
+        </div>
+    </div>
+@endif
 <div class="container">
     <div class="card mt-5">
         <div class="card-head">
@@ -36,6 +49,12 @@
                     name="stok" value="{{old('stok', @$kamar ? $kamar->stok : '')}}">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
+                <div class="mb-3">
+                    <label for="harga" class="form-label">Harga</label>
+                    <input type="text" class="form-control" id="stok" aria-describedby="emailHelp" 
+                    name="harga" value="{{old('harga', @$kamar ? $kamar->harga : '')}}">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
@@ -53,7 +72,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $i = 0;
+                            @endphp
                             @foreach ($fasilitaskamar as $row)
+                            @php
+                                $i++;
+                            @endphp
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$row->kamar->tipe_kamar}}</td>
                                 <td>{{$row->nama_fasilitas}}</td>
@@ -62,8 +87,26 @@
                                     @csrf
                                     @method('DELETE')
                                         <a href="{{route('fasilitaskamar.edit', $row->id)}}" class="btn btn-warning" >Edit </a>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>   
+                                        <button type="submit" class="btn btn-danger" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$i}}">Delete</button>
+                                    </form>  
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{$i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">{{$row->nama_fasilitas}}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div> 
                                 </td>
                         </tbody>
                             @endforeach

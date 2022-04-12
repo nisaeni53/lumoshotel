@@ -48,6 +48,7 @@ class KamarController extends Controller
             'tipe_kamar' => 'required',
             'foto' => 'required|mimes:jpg,jpeg,tmp,png',
             'stok' => 'required',
+            'harga' => 'required',
         ];
 
         $this->validate($request, $rule);
@@ -114,6 +115,7 @@ class KamarController extends Controller
             'tipe_kamar' => 'required',
             'foto' => 'required|mimes:jpg,jpeg,tmp,png',
             'stok' => 'required',
+            'harga' => 'required',
         ];
 
         $this->validate($request, $rule);
@@ -122,7 +124,7 @@ class KamarController extends Controller
         $kamar->tipe_kamar = $request->tipe_kamar;
         $kamar->foto = $request->foto;
         $kamar->stok = $request->stok;
-
+        $kamar->harga = $request->harga;
 
         $status = $kamar->save();
         if ($status){
@@ -141,6 +143,6 @@ class KamarController extends Controller
     public function destroy(Kamar $kamar)
     {
         $kamar->delete();
-        return redirect('admin/kamar')->with('succes','Siswa Berhasil di Hapus');
+        return redirect('admin/kamar')->with('success','Data Kamar Berhasil di Hapus');
     }
 }

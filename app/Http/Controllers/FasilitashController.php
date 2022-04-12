@@ -146,6 +146,6 @@ class FasilitashController extends Controller
     {
         //
         $fasilitashotel->delete();
-        return redirect('admin/fasilitashotel')->with('succes','Siswa Berhasil di Hapus');
+        return redirect('admin/fasilitashotel')->with('success','Fasilitas Berhasil di Hapus');
     }
 }

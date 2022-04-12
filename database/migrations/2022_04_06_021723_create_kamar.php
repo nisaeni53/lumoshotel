@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('tipe_kamar', 30);
             $table->string('foto');
             $table->integer('stok');
+            $table->integer('harga');
             $table->timestamps();
         });
     }
