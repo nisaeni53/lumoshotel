@@ -52,6 +52,7 @@ class LandingController extends Controller
             'check_in => required',
             'check_out => required',
             'jumlah_kamar => required',
+            'harga_total => required',
 
         ];
         $customMessages = [
@@ -61,6 +62,7 @@ class LandingController extends Controller
             'check_in.required' => 'Field Nama Fasilitas Wajib Diisi',
             'check_out.required' => 'Field Nama Fasilitas Wajib Diisi',
             'jumlah_kamar.required'  => 'Field Nama Fasilitas Wajib Diisi',
+            'harga_total.required'  => 'Field Nama Fasilitas Wajib Diisi',
         ];
 
         $this->validate($request, $rule, $customMessages);

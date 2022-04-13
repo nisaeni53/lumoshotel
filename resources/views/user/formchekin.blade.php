@@ -51,6 +51,10 @@
                                     <label for="jumlah_kamar" class="form-label">Jumlah</label>
                                     <input type="text" class="form-control" id="jumlah_kamar" name="jumlah_kamar">
                                 </div>
+                                <div class="col-6">
+                                    <label for="harga_total" class="form-label">Harga Total</label>
+                                    <input type="text" class="form-control" id="harga_total" name="harga_total">
+                                </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
