@@ -25,6 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/landing', LandingController::class); 
+Route::get('/cetakpdf', [LandingController::class, 'cetak_pdf']);
 
 // Route::group(['middleware' => ['auth','cekrole:admin,resepsionis']], function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');

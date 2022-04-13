@@ -67,10 +67,9 @@ class LandingController extends Controller
 
         $this->validate($request, $rule, $customMessages);
         $input = $request->all();
-
         $status = Pemesanan::create($input);
         if ($status){
-            return redirect('/user/cetak')->with('success', 'Data berhasil diubah');
+            return redirect('/cetakpdf')->with('success', 'Data berhasil diubah');
         }else{
             return redirect('/user/formcheckin')->with('error', 'Data gagal diubah');
         }
@@ -133,5 +132,9 @@ class LandingController extends Controller
         $data['fasilitashotel'] = FasilitasHotel::all();
         dd($fasilitask);
         return view('user.landing', $data, ['fasilitask' => $fasilitask]);
+    }
+
+    public function cetak_pdf(){
+        return view('user.cetak');
     }
 }
