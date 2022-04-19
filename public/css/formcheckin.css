@@ -14,3 +14,11 @@ button.btn.btn-primary.form-control {
     height: 50px;
     border-radius: 12px;
 }
+
+.card-header{
+    background-color: rgb(132, 166, 230);
+}
+
+.card{
+    margin-top: 85px;
+}

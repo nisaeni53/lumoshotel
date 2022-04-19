@@ -6,6 +6,7 @@ use App\Models\FasilitasKamar;
 use App\Models\Kamar;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class KamarController extends Controller
 {
@@ -125,7 +126,18 @@ class KamarController extends Controller
         $kamar->foto = $request->foto;
         $kamar->stok = $request->stok;
         $kamar->harga = $request->harga;
+        if ($request->hasFile('foto')) {
+            File::delete($kamar->foto);
+            $foto = $request->file('foto');
+            $foto_ext = $foto->getClientOriginalExtension();
+            $foto_name = Str::random(8);
 
+        $upload_path = 'assets/admin';
+        $imagename = $upload_path.'/'.$foto_name.'.'.$foto_ext;
+        $request->file('foto')->move($upload_path,$imagename);
+
+        $kamar['foto'] = $imagename;
+        }
         $status = $kamar->save();
         if ($status){
             return redirect('admin/kamar')->with('success', 'Data berhasil diubah');

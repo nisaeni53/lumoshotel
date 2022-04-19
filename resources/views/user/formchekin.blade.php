@@ -51,11 +51,9 @@
                                     <label for="jumlah_kamar" class="form-label">Jumlah</label>
                                     <input type="text" class="form-control" id="jumlah_kamar" name="jumlah_kamar">
                                 </div>
-                                <div class="col-6">
-                                    <label for="harga_total" class="form-label">Harga Total</label>
-                                    <input type="text" class="form-control" id="harga_total" name="harga_total">
-                                </div>
                             </div>
+                            <label for="harga_total" class="form-label">Harga Total</label>
+                                <input type="text" class="form-control" id="harga_total" name="harga_total">
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <input type="hidden" name="status" value="1">
@@ -64,7 +62,8 @@
                             <div class="ini-harga mt-2" style="text-align: right">
                                 <h5>Rp 500.000/Kamar</h5>
                             </div>
-                            <button type="submit" class="btn btn-primary form-control">Simpan</button>
+                            <button type="submit" class="btn btn-primary form-control">Pesan Sekarang</button>
+                            <a href="{{url('user/cetak',$row->id)}}" type="hidden"></a>
                         </div>
                         </form>
                     </div>

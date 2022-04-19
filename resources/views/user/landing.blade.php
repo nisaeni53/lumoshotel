@@ -57,7 +57,7 @@
                             <img src="{{asset('image/')}}/kamar1.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">
-                                    <h5 class="price">Rp 15.000</h5>
+                                    <h5 class="price">{{$item->harga}}</h5>
                                     <div class="information-room d-flex">
                                         <h4 class="name-room">{{$item->tipe_kamar}}</h4>
                                         <p class="btnselengkapnya">

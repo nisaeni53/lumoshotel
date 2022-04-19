@@ -134,7 +134,9 @@ class LandingController extends Controller
         return view('user.landing', $data, ['fasilitask' => $fasilitask]);
     }
 
-    public function cetak_pdf(){
-        return view('user.cetak');
-    }
+    
+        public function cetak_pdf(){
+            $item = Pemesanan::latest()->first();
+            return view('user.cetak', compact('item'));
+        }
 }
